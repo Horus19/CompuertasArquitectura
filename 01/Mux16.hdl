@@ -14,5 +14,20 @@ CHIP Mux16 {
     OUT out[16];
 
     PARTS:
-    // Put your code here:
+    Not (in = sel, out = x1); And (a=a[0],b=x1,out =y1); And (a=b[0],b=sel, out=t1); Or (a=y1,b=t1,out = out[0]);
+    Not (in = sel, out = x2); And (a=a[1],b=x2,out =y2); And (a=b[1],b=sel, out=t2); Or (a=y2,b=t2,out = out[1]);
+    Not (in = sel, out = x3); And (a=a[2],b=x3,out =y3); And (a=b[2],b=sel, out=t3); Or (a=y3,b=t3,out = out[2]);
+    Not (in = sel, out = x4); And (a=a[3],b=x4,out =y4); And (a=b[3],b=sel, out=t4); Or (a=y4,b=t4,out = out[3]);
+    Not (in = sel, out = x5); And (a=a[4],b=x5,out =y5); And (a=b[4],b=sel, out=t5); Or (a=y5,b=t5,out = out[4]);
+    Not (in = sel, out = x6); And (a=a[5],b=x6,out =y6); And (a=b[5],b=sel, out=t6); Or (a=y6,b=t6,out = out[5]);
+    Not (in = sel, out = x7); And (a=a[6],b=x7,out =y7); And (a=b[6],b=sel, out=t7); Or (a=y7,b=t7,out = out[6]);
+    Not (in = sel, out = x8); And (a=a[7],b=x8,out =y8); And (a=b[7],b=sel, out=t8); Or (a=y8,b=t8,out = out[7]);
+    Not (in = sel, out = x9); And (a=a[8],b=x9,out =y9); And (a=b[8],b=sel, out=t9); Or (a=y9,b=t9,out = out[8]);
+    Not (in = sel, out = x10); And (a=a[9],b=x10,out =y10); And (a=b[9],b=sel, out=t10); Or (a=y10,b=t10,out = out[9]);
+    Not (in = sel, out = x11); And (a=a[10],b=x11,out =y11); And (a=b[10],b=sel, out=t11); Or (a=y11,b=t11,out = out[10]);
+    Not (in = sel, out = x12); And (a=a[11],b=x12,out =y12); And (a=b[11],b=sel, out=t12); Or (a=y12,b=t12,out = out[11]);
+    Not (in = sel, out = x13); And (a=a[12],b=x13,out =y13); And (a=b[12],b=sel, out=t13); Or (a=y13,b=t13,out = out[12]);
+    Not (in = sel, out = x14); And (a=a[13],b=x14,out =y14); And (a=b[13],b=sel, out=t14); Or (a=y14,b=t14,out = out[13]);
+    Not (in = sel, out = x15); And (a=a[14],b=x15,out =y15); And (a=b[14],b=sel, out=t15); Or (a=y15,b=t15,out = out[14]);
+    Not (in = sel, out = x16); And (a=a[15],b=x16,out =y16); And (a=b[15],b=sel, out=t16); Or (a=y16,b=t16,out = out[15]);
 }
