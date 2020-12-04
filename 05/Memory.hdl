@@ -14,28 +14,28 @@
  * into the memory location specified by address. This value becomes 
  * available through the out output from the next time step onward.
  * Address space rules:
- * Only the upper 16K+8K+1 words of the Memory chip are used.
+ * Only the upper 16K+8K+1 words of the Memory chip are used. 
  * Access to address>0x6000 is invalid. Access to any address in 
  * the range 0x4000-0x5FFF results in accessing the screen memory 
  * map. Access to address 0x6000 results in accessing the keyboard 
- * memory map. The behavior in these addresses is described in the
+ * memory map. The behavior in these addresses is described in the 
  * Screen and Keyboard chip specifications given in the book.
  */
 
 CHIP Memory {
-
     IN in[16], load, address[15];
     OUT out[16];
 
     PARTS:
-    // Put your code here:
-    DMux4Way(in = load, sel = address[13..14], a = A1, b = A2, c = A3, d = A4);
-    
-    Or(a = A1, b = A2, out = A5);
+    DMux4Way(in=load,sel=address[13..14],a=rm,b=rrm,c=scrn,d=keybd);
 
-    RAM16K(in = in, load = A5, address = address[0..13], out = outa);
-    Screen(in = in, load = A3, address = address[0..12], out = outb);
-    Keyboard(out = A6);
+	Or(a=rm,b=rrm,out=rr);
+	RAM16K(in=in,load=rr,address=address[0..13],out=r);
+	
+	Screen(in=in,load=scrn,address=address[0..12],out=sc);
+	
+	Keyboard(out=k);
 
-    Mux4Way16(a=outa, b=outa, c = outb, d = A6, sel=address[13..14], out = out);
+	Mux4Way16(a=r,b=r,c=sc,d=k,sel=address[13..14],out=out);
+
 }
